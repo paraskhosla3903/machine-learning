@@ -8,10 +8,6 @@ cap = cv2.VideoCapture(0) # 0 is setting for webcam
 
 with mp_hands.Hands(min_detection_confidence=0.5,min_tracking_confidence=0.5) as hands:
 
-# external app download
-# read from videocapture
-# close
-
     while(cap.isOpened()):
         ret,frame = cap.read()
 
@@ -25,8 +21,7 @@ with mp_hands.Hands(min_detection_confidence=0.5,min_tracking_confidence=0.5) as
         if(results.multi_hand_landmarks):
             for num, hand in enumerate(results.multi_hand_landmarks):
                 mp_drawings.draw_landmarks(image,hand,mp_hands.HAND_CONNECTIONS)
-
-        # num 
+ 
         image = cv2.cvtColor(image,cv2.COLOR_RGB2BGR)
 
         cv2.imshow('video',image)
